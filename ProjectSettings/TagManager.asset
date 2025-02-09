@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Anchor
+  - detail_fpv_goggles
+  - detail_raspberry_pi
+  - detail_laser_rangefinder
+  - detail_coex_pix
+  - detail_charge_indicator
+  - detail_camera
+  - detail_rc_transmitter
+  - detail_led_strip
+  - detail_red_motor
+  - detail_black_motor
+  - detail_battery
+  - detail_rc_reciever
+  - detail_coex_pdb
+  - detail_coex_gps
+  - detail_fpv_transmitter
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

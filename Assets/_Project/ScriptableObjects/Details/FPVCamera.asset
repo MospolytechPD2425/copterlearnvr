@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 262f51563890a2e41a94dfe2ea2a3993, type: 3}
+  m_Name: FPVCamera
+  m_EditorClassIdentifier: 
+  _title: "FPV Camera (\u041A\u0430\u043C\u0435\u0440\u0430 FPV)"
+  _description: "\u0424\u0438\u043A\u0441\u0438\u0440\u0443\u0435\u0442 \u0432\u0438\u0434\u0435\u043E
+    \u0432 \u0440\u0435\u0430\u043B\u044C\u043D\u043E\u043C \u0432\u0440\u0435\u043C\u0435\u043D\u0438
+    \u0438 \u043F\u0435\u0440\u0435\u0434\u0430\u0435\u0442 \u0435\u0433\u043E \u0447\u0435\u0440\u0435\u0437
+    FPV \u043F\u0435\u0440\u0435\u0434\u0430\u0442\u0447\u0438\u043A."
+  _sprite: {fileID: 21300000, guid: bd3295d0b9bb63c48855bbc04597d213, type: 3}
