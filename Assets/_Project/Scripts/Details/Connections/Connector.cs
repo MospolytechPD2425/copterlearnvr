@@ -13,8 +13,6 @@ namespace Details.Connections
         public static Connector Instance { get; private set; }
 
         [SerializeField] private Connections _correctConnections;
-        [SerializeField] private InputActionProperty _primaryButton;
-        [SerializeField] private InputActionProperty _secondaryButton;
         private ContactPoint? _hoveredContactPoint;
         private ContactPoint? _selectedContactPoint;
         private Connections _currentConnections;
@@ -25,25 +23,6 @@ namespace Details.Connections
         {
             Instance = this;
             _currentConnections = GetComponent<Connections>();
-        }
-        private void OnEnable()
-        {
-            _primaryButton.action.performed += OnPrimaryButtonPressed;
-            _secondaryButton.action.performed += OnSecondaryButtonPressed;
-        }
-        private void OnDisable()
-        {
-            _primaryButton.action.performed -= OnPrimaryButtonPressed;
-            _primaryButton.action.performed -= OnSecondaryButtonPressed;
-        }
-
-        private void OnPrimaryButtonPressed(InputAction.CallbackContext obj)
-        {
-            SelectPoint();
-        }
-        private void OnSecondaryButtonPressed(InputAction.CallbackContext obj)
-        {
-            SelectPoint();
         }
         public void SetHoveredContactPoint(ContactPoint contactPoint)
         {

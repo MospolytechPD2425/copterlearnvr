@@ -797,7 +797,7 @@
                     "name": "Scale Toggle",
                     "type": "Button",
                     "id": "80ed7d74-56de-473c-bf76-da3bdd16b562",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -824,6 +824,15 @@
                     "name": "SecondaryButton",
                     "type": "Button",
                     "id": "213140ee-7e56-4344-8743-193709f6aa26",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "StickClick",
+                    "type": "Button",
+                    "id": "1a18d447-7f24-4aa7-a7a8-534d56b6dba7",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -1026,6 +1035,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "SecondaryButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6555dd70-eb20-4315-9a74-db9b8fcf5785",
+                    "path": "<XRController>{LeftHand}/{Primary2DAxisClick}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StickClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
