@@ -1,3 +1,4 @@
+using Assets._Project.Scripts.Build;
 using Assets._Project.Scripts.Monitors;
 using NaughtyAttributes;
 using TMPro;
@@ -22,7 +23,7 @@ public class WelcomeMonitor : MonoBehaviour
         _image.SetNativeSize();
         _textComponent.text = _pages[_currentPage].Text;
 
-        if (_currentPage == _pages.Length - 1)
+        if (_currentPage == _pages.Length - 1 && !BuildController.IsBuilding)
         {
             _startBuildButton.SetActive(true);
         }

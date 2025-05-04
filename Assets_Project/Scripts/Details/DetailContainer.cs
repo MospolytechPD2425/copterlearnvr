@@ -24,7 +24,7 @@ namespace Details
             }
         }
         
-        public void ResetDetailsTransforms()
+        public void ResetDetailsPositions()
         {
             if (_itemsStartTransforms == null || _itemsStartTransforms.Length != _items.Length)
             {
@@ -40,11 +40,28 @@ namespace Details
                 Rigidbody rb = _items[i].GetComponent<Rigidbody>();
                 if (rb != null)
                 {
-                    rb.linearVelocity = Vector3.zero;
+                    rb.velocity = Vector3.zero;
                     rb.angularVelocity = Vector3.zero;
                 }
-                _items[i].transform.SetParent(transform);
             }
         }
+        
+        /*
+        public void ShowPossibleContactPoints(DetailInteract detail_from)
+        {
+            for (int i = 0; i < _items.Length; i++)
+            {
+                if (_items[i] == detail_from) continue;
+                _items[i].ShowContactPoints();
+            }
+        }
+        public void HideContactPoints()
+        {
+            for (int i = 0; i < _items.Length; i++)
+            {
+                _items[i].HideContactPoints();
+            }
+        }
+        */
     }
 }

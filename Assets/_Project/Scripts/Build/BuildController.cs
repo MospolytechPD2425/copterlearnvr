@@ -1,4 +1,5 @@
 ﻿using Assets._Project.Scripts.DifficultyLevels;
+using Details;
 using System.Collections;
 using UnityEngine;
 
@@ -9,7 +10,13 @@ namespace Assets._Project.Scripts.Build
         [SerializeField] private GameObject _affordances;
         [SerializeField] private GameObject _copterScheme;
         [SerializeField] private GameObject _sockets;
+        [SerializeField] private DetailContainer _detailContainer;
         private DifficultyLevel _difficultyLevel;
+        public static bool IsBuilding { get; private set; }
+        private void Awake()
+        {
+            IsBuilding = false;
+        }
         public void SetDifficult(DifficultyLevel difficultyLevel)
         {
             _difficultyLevel = difficultyLevel;
@@ -22,6 +29,8 @@ namespace Assets._Project.Scripts.Build
             if (_difficultyLevel.HideCopterScheme)
                 _copterScheme.SetActive(false);
             _sockets.SetActive(true);
+            _detailContainer.ResetDetailsTransforms();
+            IsBuilding = true;
         }
         public void StopBuild()
         {
@@ -30,6 +39,7 @@ namespace Assets._Project.Scripts.Build
             if (_difficultyLevel.HideCopterScheme)
                 _copterScheme.SetActive(true);
             _sockets.SetActive(false);
+            IsBuilding = false;
         }
     }
 }
