@@ -102,7 +102,7 @@ namespace HPlayer
 
         private void UpdateHeldObjectPosition()
         {
-            HeldObject.Rigidbody.velocity = (handTransform.position - HeldObject.transform.position) * holdingForce;
+            HeldObject.Rigidbody.linearVelocity = (handTransform.position - HeldObject.transform.position) * holdingForce;
 
             Vector3 handRot = handTransform.rotation.eulerAngles;
             if (handRot.x > 180f)

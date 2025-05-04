@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
-using Monitors;
+using ContactPoint = Details.Connections.ContactPoint;
 
 namespace Details
 {
@@ -22,8 +22,8 @@ namespace Details
         }
         private void Start()
         {
-            Debug.Log("Hide ContactPoints");
             HideContactPoints();
+            SetActiveContactPoints(false);
         }
         private void OnEnable()
         {
@@ -44,31 +44,40 @@ namespace Details
 
         private void OnFocusEntered(FocusEnterEventArgs arg0)
         {
-            ShowContactPoints();
+            //ShowContactPoints();
         }
         private void OnFocusExited(FocusExitEventArgs arg0)
         {
-            HideContactPoints();
+            //HideContactPoints();
         }
 
         private void OnHoverEntered(HoverEnterEventArgs arg0)
         {
-            MonitorManager.instance.SetDetail(_info);
+            
+            
         }
 
         private void OnHoverExited(HoverExitEventArgs arg0)
         {
-
+            
         }
         public void ShowContactPoints()
         {
+            Debug.Log($"ShowContactPoints {_info.Title}");
             for (int i = 0; i < _contactPoints.Length; i++)
                 _contactPoints[i].Show();
         }
         public void HideContactPoints()
         {
+            Debug.Log($"HideContactPoints {_info.Title}");
             for (int i = 0; i < _contactPoints.Length; i++)
-                _contactPoints[i].Hide();
+                if (_contactPoints[i].MatState != Connections.ContactPointMatState.Selected)
+                    _contactPoints[i].Hide();
+        }
+        public void SetActiveContactPoints(bool active)
+        {
+            for (int i = 0; i < _contactPoints.Length; i++)
+                _contactPoints[i].gameObject.SetActive(active);
         }
     }
 }

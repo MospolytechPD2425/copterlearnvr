@@ -9,55 +9,70 @@ namespace Details
     public class DetailSocket : MonoBehaviour
     {
         private XRSocketInteractor _interactor;
+        private DetailInteract? _currentDetail = null;
         [TagSelector] [SerializeField] private string _detailTag;
         
         private void Awake()
         {
             _interactor = GetComponent<XRSocketInteractor>();
+        }
+        private void OnEnable()
+        {
             _interactor.selectEntered.AddListener(OnSelectEntered);
             _interactor.selectExited.AddListener(OnSelectExited);
-            //_interactor.socketActive = false;
         }
-
+        private void OnDisable()
+        {
+            _interactor.selectEntered.RemoveListener(OnSelectEntered);
+            _interactor.selectExited.RemoveListener(OnSelectExited);
+        }
         private void OnSelectExited(SelectExitEventArgs arg0)
         {
-            _interactor.allowHover = true;
+            Debug.Log($"Detail Socket Selected {gameObject.name}");
+            //_interactor.allowHover = true;
+            if ( _currentDetail != null )
+            {
+                _currentDetail.HideContactPoints();
+                _currentDetail.SetActiveContactPoints(false);
+                _currentDetail = null;
+            }
         }
 
         private void OnSelectEntered(SelectEnterEventArgs arg0)
         {
-            _interactor.allowHover = false;
+            Debug.Log($"Detail Socket Deselected {gameObject.name}");
+            Debug.Log($"current Detail is null: {_currentDetail is null}");
+            if (_currentDetail is not null)
+            {
+                _currentDetail.SetActiveContactPoints(true);
+                _currentDetail.ShowContactPoints();
+            }
+            else
+            {
+                _interactor.interactionManager.SelectExit(_interactor, arg0.interactableObject);
+            }
         }
-
+        
         private void OnTriggerEnter(Collider other)
         {
             if (CheckDetailOnCollider(other))
             {
-                //_interactor.allowHover = true;
-                _interactor.socketActive = true;
+                //_interactor.socketActive = true;
+                //_interactor.allowSelect = true;
+                _interactor.allowHover = true;
+                _currentDetail = other.GetComponent<DetailInteract>();
             }
             else
             {
-                _interactor.socketActive = false;
-                //_interactor.allowHover = false;
-            }
-        }
-        /*
-        private void OnTriggerExit(Collider other)
-        {
-            if (CheckDetailOnCollider(other))
-            {
-                _interactor.allowHover = false;
                 //_interactor.socketActive = false;
+                //_interactor.allowSelect = false;
+                _interactor.allowHover = false;
             }
-        }
-        */
-        private bool CheckDetailOnCollider(Collider collider)
-        {
-            Debug.Log($"collider: {collider.name}; bool: {collider.CompareTag("detail_fpv_goggles")}");
-            return collider.CompareTag(_detailTag);
-            //return collider.GetComponent<DetailInteract>().Info == _detailInteract.Info;
         }
         
+        private bool CheckDetailOnCollider(Collider collider)
+        {
+            return collider.CompareTag(_detailTag);
+        }
     }
 }

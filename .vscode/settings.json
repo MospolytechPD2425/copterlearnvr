@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "copterlearnvr.sln"
+    "dotnet.defaultSolution": "copterlearn.sln"
 }
