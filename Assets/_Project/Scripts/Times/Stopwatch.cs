@@ -7,25 +7,32 @@ using Assets.Scripts.Times;
 
 namespace Assets.Scripts.Times
 {
-    public class BuildTimer : MonoBehaviour
+    public class Stopwatch : MonoBehaviour
     {
         [SerializeField] TextMeshProUGUI _text;
-        private float _tickFrequency = 0.1f;
+        private float _tickFrequency = 0.01f;
         private bool _isTicking = false;
 
         public double TimeInSeconds { get; private set; }
-        public void StartTimer()
+        public void StartTick()
         {
             TimeInSeconds = 0;
+            _isTicking = true;
             StartCoroutine(Tick());
+            _text.color = Color.white;
         }
-        public void StopTimer()
+        
+        public void StopTick()
         {
-            StopCoroutine(Tick());
+            _isTicking = false;
+            StopAllCoroutines();
+            _text.color = Color.gray;
+            _text.text = "00:00:00";
         }
+        
         private IEnumerator Tick()
         {
-            while (true)
+            while (_isTicking)
             {
                 _text.text = TimeConverter.ConvertToMinSecs(TimeInSeconds);
                 yield return new WaitForSeconds(_tickFrequency);

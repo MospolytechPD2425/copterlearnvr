@@ -11,7 +11,8 @@ namespace Assets.Scripts.Times
         {
             int minutes = (int)(seconds / 60);
             int remainingSeconds = (int)(seconds % 60);
-            return string.Format("{0:D2}:{1:D2}", minutes, remainingSeconds);
+            int hundredths = (int)((seconds * 100) % 100);
+            return string.Format("{0:D2}:{1:D2}:{2:D2}", minutes, remainingSeconds, hundredths);
         }
     }
 }

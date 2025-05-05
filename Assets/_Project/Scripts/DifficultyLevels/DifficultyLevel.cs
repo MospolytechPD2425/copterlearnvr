@@ -28,7 +28,7 @@ namespace Assets._Project.Scripts.DifficultyLevels
         }
         public static DifficultyLevel CreateDefault()
         {
-            return new DifficultyLevel(true, false, true);
+            return new DifficultyLevel(false, true, true);
         }
     }
 }
